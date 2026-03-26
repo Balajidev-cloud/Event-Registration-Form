@@ -2,7 +2,9 @@
 <html>
 <head>
 <title>Event Registration</title>
-</head>
+<link rel="stylesheet" href="style.css">
+</head> 
+
 
 <body>
 
@@ -61,6 +63,86 @@ I confirm that the above details are correct
 <th>Mode</th>
 </tr>
 </table>
+<script>
+
+const form=document.getElementById("eventForm")
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault()
+
+let name=document.getElementById("name").value
+let email=document.getElementById("email").value
+let phone=document.getElementById("phone").value
+let dob=document.getElementById("dob").value
+let gender=document.getElementById("gender").value
+let event=document.getElementById("event").value
+let mode=document.getElementById("mode").value
+let college=document.getElementById("college").value
+let confirm=document.getElementById("confirm").checked
+
+if(name===""){
+alert("Name cannot be empty")
+return
+}
+
+let emailPattern=/^\S+@\S+\.\S+$/
+
+if(!emailPattern.test(email)){
+alert("Invalid Email")
+return
+}
+
+if(phone.length!=10 || isNaN(phone)){
+alert("Phone must be 10 digits")
+return
+}
+
+if(dob===""){
+alert("Select Date of Birth")
+return
+}
+
+if(gender===""){
+alert("Select Gender")
+return
+}
+
+if(event===""){
+alert("Select Event")
+return
+}
+
+if(mode===""){
+alert("Select Mode")
+return
+}
+
+if(college===""){
+alert("Enter College / Company")
+return
+}
+
+if(!confirm){
+alert("Please confirm details")
+return
+}
+
+let table=document.getElementById("table")
+
+let row=table.insertRow()
+
+row.insertCell(0).innerHTML=name
+row.insertCell(1).innerHTML=email
+row.insertCell(2).innerHTML=phone
+row.insertCell(3).innerHTML=event
+row.insertCell(4).innerHTML=mode
+
+form.reset()
+
+})
+
+</script>
 
 </div>
 
